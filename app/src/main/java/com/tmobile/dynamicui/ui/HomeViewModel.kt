@@ -20,6 +20,11 @@ class HomeViewModel @Inject constructor(
         fetchHomeData()
     }
 
+    /**
+     * TODO: This private method can be made public and can be called from view
+     * (for example  on swipe to refresh) to refresh the UI
+     */
+
     private fun fetchHomeData() {
         viewModelScope.launch {
             _homeData.value = Result.loading()

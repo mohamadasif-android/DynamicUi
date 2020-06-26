@@ -1,10 +1,14 @@
 package com.tmobile.dynamicui.util
 
+import android.app.Activity
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.NetworkInfo
+import android.view.View
+import android.widget.Toast
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.net.Socket
@@ -12,6 +16,22 @@ import java.net.Socket
 inline fun <T : ViewDataBinding> T.executeAfter(block: T.() -> Unit) {
     block()
     executePendingBindings()
+}
+
+fun View.visible() {
+    visibility = View.VISIBLE
+}
+
+fun View.invisible() {
+    visibility = View.INVISIBLE
+}
+
+fun View.gone() {
+    visibility = View.GONE
+}
+
+fun Activity.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
+    Toast.makeText(this, message, duration).show()
 }
 
 fun hasNetwork(context: Context): Boolean {
